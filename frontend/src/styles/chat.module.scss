@@ -1,0 +1,202 @@
+/* ================================
+   Floating Dark Glass Chat Widget
+   ================================ */
+
+.chatContainer {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  width: 340px;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  background: rgba(17, 24, 39, 0.65);
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  overflow: hidden;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Chat Header */
+.chatHeader {
+  padding: 0.8rem 1rem;
+  background: rgba(31, 41, 55, 0.7);
+  font-weight: 600;
+  color: #f9fafb;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatHeader button {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+}
+
+.chatHeader button:hover {
+  color: #f3f4f6;
+}
+
+/* Messages Section */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #4b5563 transparent;
+}
+
+.messages::-webkit-scrollbar {
+  width: 6px;
+}
+.messages::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+  border-radius: 3px;
+}
+
+/* Message Bubbles */
+.message {
+  max-width: 85%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.8rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  word-break: break-word;
+  white-space: pre-wrap;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease-in-out;
+}
+
+.user {
+  align-self: flex-end;
+  background: rgba(37, 99, 235, 0.9);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+}
+
+.bot {
+  align-self: flex-start;
+  background: rgba(55, 65, 81, 0.85);
+  color: #f3f4f6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.loading {
+  text-align: center;
+  font-style: italic;
+  color: #9ca3af;
+  font-size: 0.85rem;
+}
+
+/* Input Area */
+.inputArea {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(17, 24, 39, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.inputArea input {
+  flex: 1;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.7rem;
+  background: rgba(31, 41, 55, 0.6);
+  color: #f3f4f6;
+  font-size: 0.9rem;
+  outline: none;
+  transition: 0.2s;
+
+  &::placeholder {
+    color: #9ca3af;
+  }
+
+  &:focus {
+    border-color: #3b82f6;
+    background: rgba(31, 41, 55, 0.85);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+  }
+}
+
+.inputArea button {
+  padding: 0.6rem 1.1rem;
+  background: rgba(37, 99, 235, 0.9);
+  color: white;
+  border: none;
+  border-radius: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(29, 78, 216, 1);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(1px);
+    background: rgba(30, 64, 175, 1);
+  }
+}
+
+/* Floating Button for Small Screens */
+.floatingButton {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  background: rgba(37, 99, 235, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.floatingButton:hover {
+  background: rgba(29, 78, 216, 1);
+  transform: scale(1.05);
+}
+
+/* Responsive Behavior */
+@media (max-width: 768px) {
+  .chatContainer {
+    width: 95%;
+    left: 50%;
+    bottom: 1rem;
+    transform: translateX(-50%);
+    max-height: 75vh;
+  }
+
+  .floatingButton {
+    display: flex;
+  }
+
+  .chatHidden {
+    display: none;
+  }
+}
