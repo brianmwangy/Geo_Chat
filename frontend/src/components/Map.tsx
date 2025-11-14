@@ -285,3 +285,6 @@ export default function Map({ queryData, style, mapboxToken }: MapProps) {
     </div>
   );
 }
+
+
+
